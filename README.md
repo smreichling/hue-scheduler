@@ -1,6 +1,6 @@
 # hue-scheduler
 
-Quick-and-dirty script that uses the Philips Hue API to make the lights in my kitchen twinkle!
+Quick-and-dirty script that uses the Philips Hue API to make the lights in my kitchen fade through Christmas colors!
 
 ## Dev Setup
  1. Install Python 3.7
@@ -8,6 +8,5 @@ Quick-and-dirty script that uses the Philips Hue API to make the lights in my ki
 
 ## To Run
 ```
-pipenv run python -m scheduler 
+pipenv run python -m huefader 
 ```
-If the lights currently are not twinkling, the script will start them twinkling. If they are twinkling, it will stop the twinkling.
