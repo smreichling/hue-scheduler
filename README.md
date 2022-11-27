@@ -1,12 +1,16 @@
-# hue-scheduler
+# huefader
 
 Quick-and-dirty script that uses the Philips Hue API to make the lights in my kitchen fade through Christmas colors!
 
 ## Dev Setup
- 1. Install Python 3.7
- 2. Install Pipenv
+ 1. Install Docker
+
+## To Build
+```
+docker build -t huefader .
+```
 
 ## To Run
 ```
-pipenv run python -m huefader 
+docker run -it --rm huefader:latest
 ```
