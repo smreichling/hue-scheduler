@@ -8,4 +8,4 @@ WORKDIR /opt/huefader
 COPY huefader/* /opt/huefader/
 
 WORKDIR /opt
-ENTRYPOINT python3 -m huefader 
+ENTRYPOINT ["python3", "-m", "huefader"] 

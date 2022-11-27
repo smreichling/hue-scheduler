@@ -12,5 +12,5 @@ docker build -t huefader .
 
 ## To Run
 ```
-docker run -it --rm huefader:latest
+docker run --rm huefader:latest BRIDGE_IP ROOM_OR_ZONE_NAME
 ```
