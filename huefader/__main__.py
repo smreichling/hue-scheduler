@@ -1,7 +1,9 @@
 import argparse
 import sys
 import os
-from .huefader import HueFader, InvalidBridgeAddressException, InvalidGroupNameException
+from typing import Optional, List
+from .huefader import HueFader, KnownColors
+from .exceptions import InitializationException
 
 parser = argparse.ArgumentParser(description='Fade Hue lights through colors')
 parser.add_argument(
@@ -13,6 +15,13 @@ parser.add_argument(
 	'group',
 	type=str,
 	help='Room or Zone to control',
+)
+parser.add_argument(
+	'--colors',
+	type=str,
+	choices=KnownColors.keys(),
+	action='append',
+	nargs='+',
 )
 parser.add_argument(
 	'--debug',
@@ -32,11 +41,13 @@ if __name__ == '__main__':
 	else:
 		log_out = open(os.devnull, 'w')
 
+	colors: Optional[List[str]] = None
+	if args.colors is not None:
+		colors = [ c for cs in args.colors for c in cs ]
+
 	try:
-		hue_fader = HueFader(log_out, args.bridge, args.group)
-	except InvalidBridgeAddressException as e:
-		error_and_exit(e)
-	except InvalidGroupNameException as e:
+		hue_fader = HueFader(log_out, args.bridge, args.group, colors)
+	except InitializationException as e:
 		error_and_exit(e)
 
 	hue_fader.run()
