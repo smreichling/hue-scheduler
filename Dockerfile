@@ -7,5 +7,7 @@ RUN mkdir -p /opt/huefader
 WORKDIR /opt/huefader
 COPY huefader/* /opt/huefader/
 
+RUN mkdir -p /root/.phue
+
 WORKDIR /opt
-ENTRYPOINT ["python3", "-m", "huefader"] 
+ENTRYPOINT ["python3", "-m", "huefader"]
